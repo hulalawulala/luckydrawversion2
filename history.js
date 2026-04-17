@@ -29,7 +29,7 @@ function renderList() {
     const info = document.createElement('div');
     info.innerHTML = `
       <div style="font-size: 1.25rem; font-weight: bold; color: #60a5fa;">Round ${entry.round}</div>
-      <div style="font-size: 1.5rem; color: #fff; margin-top: 0.2rem;">${entry.name}</div>
+      <div style="font-size: 1.5rem; color: #000000; margin-top: 0.2rem;">${entry.name}</div>
       <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem;">Recorded: ${new Date(entry.timestamp).toLocaleString()}</div>
     `;
     
