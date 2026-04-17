@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lucky Draw</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <nav class="navbar">
+    <h1>Lucky Draw</h1>
+    <div class="nav-links">
+      <a href="index.html">Wheel</a>
+      <a href="grid.html" class="active">Grid</a>
+      <a href="history.html">History</a>
+      <a href="settings.html">Settings</a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="matrix-container">
+      <div class="controls" style="margin-bottom: 2rem;">
+        <h2 id="roundDisplay">Round: 1</h2>
+        <button id="startBtn" class="success">Start Selection</button>
+      </div>
+
+      <div class="matrix-grid" id="matrixGrid">
+        <!-- Cells injected via JS -->
+      </div>
+    </div>
+  </main>
+
+  <div class="modal-overlay" id="winnerModal">
+    <div class="modal-content">
+      <h2>WE HAVE A WINNER!</h2>
+      <p style="font-size: 1.5rem; color: var(--text-muted); margin-bottom: 0.5rem;">Congratulations to</p>
+      <p id="winnerName"
+        style="font-size: 4rem; font-weight: bold; margin-bottom: 2rem; color: var(--text-main); text-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+      </p>
+      <button id="closeModalBtn" class="success"
+        style="font-size: 1.2rem; padding: 1rem 3rem; background: var(--primary); box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);">Next
+        Round ➔</button>
+    </div>
+  </div>
+
+  <script src="db.js"></script>
+  <script src="grid.js"></script>
+</body>
+
+</html>

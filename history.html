@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Winner History - Premium Lucky Draw</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .history-card {
+      background: #ffffff;
+      border: 1px solid var(--glass-border);
+      border-radius: 8px;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <h1>History</h1>
+    <div class="nav-links">
+      <a href="index.html">Wheel</a>
+      <a href="grid.html">Grid</a>
+      <a href="history.html" class="active">History</a>
+      <a href="settings.html">Settings</a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="glass-panel" style="max-width: 800px; width: 100%; margin: 0 auto;">
+      <div
+        style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--glass-border); padding-bottom: 1rem; margin-bottom: 1rem;">
+        <h2 style="color: #facc15;">🏆 Full Winner History</h2>
+        <button id="clearAllBtn" class="danger">Clear All History</button>
+      </div>
+
+      <div
+        style="margin-bottom: 2rem; background: #f8fafc; padding: 1rem; border-radius: 8px; border: 1px solid var(--glass-border);">
+        <h3 style="font-size: 1rem; margin-bottom: 0.5rem; color: var(--text-muted)">Manual Add Record</h3>
+        <div style="display: flex; gap: 0.5rem;">
+          <input type="number" id="addRound" placeholder="Round" style="width: 80px;" min="1">
+          <input type="text" id="addName" placeholder="Participant Name" style="flex: 1;">
+          <button id="addManualBtn" class="success">Add to History</button>
+        </div>
+      </div>
+
+      <div id="fullHistoryList">
+        <!-- JS fills this -->
+      </div>
+    </div>
+  </main>
+
+  <script src="db.js"></script>
+  <script src="history.js"></script>
+</body>
+
+</html>

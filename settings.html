@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings - Lucky Draw</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <nav class="navbar">
+    <h1>Setting</h1>
+    <div class="nav-links">
+      <a href="index.html">Wheel</a>
+      <a href="grid.html">Grid</a>
+      <a href="history.html">History</a>
+      <a href="settings.html" class="active">Settings</a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="settings-grid">
+
+      <!-- Left Column -->
+      <div class="settings-section glass-panel">
+        <h2>Global Settings</h2>
+
+        <div class="form-group">
+          <label>Auto-Spin Burst Time (seconds)</label>
+          <input type="number" id="burstDuration" min="1" max="60" placeholder="e.g. 2">
+        </div>
+
+        <div class="form-group" style="margin-top: 1rem;">
+          <label>Stopping Deceleration Duration (seconds)</label>
+          <input type="number" id="spinDuration" min="1" max="30">
+        </div>
+
+        <div class="form-group" style="margin-top: 1rem;">
+          <label>Grid Animation Speed (Jump Interval)</label>
+          <select id="animationSpeed">
+            <option value="20">Extreme (20ms)</option>
+            <option value="50">Fast (50ms)</option>
+            <option value="120">Medium (120ms)</option>
+            <option value="300">Slow (300ms)</option>
+          </select>
+        </div>
+
+        <div class="form-group" style="margin-top: 1rem;">
+          <label>Confetti Duration (seconds)</label>
+          <input type="number" id="confettiDuration" min="1" max="15">
+        </div>
+
+        <div class="form-group" style="margin-top: 1rem;">
+          <label>Background Image (Grid & Wheel)</label>
+          <input type="file" id="bgImageInput" accept="image/*" style="margin-top: 0.5rem;">
+          <button id="clearBgBtn" class="danger" style="margin-top: 0.5rem; width: 100%;">Clear Background</button>
+        </div>
+
+        <div class="form-group" style="margin-top: 1rem;">
+          <label>Current Round</label>
+          <input type="number" id="currentRound" min="1">
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;">Changing this manually skips or
+            repeats rounds.</p>
+        </div>
+
+
+      </div>
+
+      <!-- Right Column -->
+      <div class="settings-section glass-panel">
+        <h2>Participant Management</h2>
+
+        <div class="form-group">
+          <label>Bulk Add Participants (Paste up to 9000 names, 1 per line)</label>
+          <textarea id="bulkAddText" rows="6" placeholder="Alice&#10;Bob&#10;Charlie..."></textarea>
+          <button id="bulkAddBtn" style="margin-top: 0.5rem;">Add Names</button>
+        </div>
+
+        <div style="margin-top: 2rem; display: flex; justify-content: space-between; align-items: center;">
+          <h3 style="font-size: 1rem;">Current Pool (<span id="totalCount">0</span>)</h3>
+          <input type="text" id="poolSearch" placeholder="Search to delete..." style="width: 60%;">
+        </div>
+
+        <div class="participant-list" id="participantList">
+          <!-- Populated by JS -->
+        </div>
+        <div style="margin-top: 1rem;">
+          <button id="clearAllBtn" class="danger" style="width: 100%;">Clear All Remaining</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pre-Selected Winners Full Width Section -->
+    <div class="settings-section glass-panel" style="max-width: 1200px; margin: 2rem auto 0; width: 100%;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <h2 style="margin-top: 0; font-size: 1.5rem;">Winners</h2>
+        <button id="toggleRiggedBtn"
+          style="padding: 0.4rem 1rem; font-size: 0.9rem; font-weight: bold; background: var(--primary);">Show
+          List</button>
+      </div>
+
+      <div class="rigged-list" id="riggedList" style="display: none; margin-bottom: 1.5rem;">
+        <!-- Populated by JS -->
+      </div>
+
+      <div style="background: #f8fafc; padding: 1.5rem; border-radius: 8px; border: 1px solid var(--glass-border);">
+        <h3 style="font-size: 1.1rem; margin-bottom: 1rem; color: var(--text-main);">Add Winner to Round</h3>
+        <div style="display: flex; gap: 1rem; align-items: flex-end; flex-wrap: wrap;">
+          <div class="form-group" style="flex: 2; min-width: 250px;">
+            <label>Name (Search or type exact name)</label>
+            <input type="text" id="rigSearch" placeholder="Enter participant name to rig..." autocomplete="off"
+              style="height: 48px;">
+            <div id="rigSearchResults" class="search-results"></div>
+          </div>
+          <div class="form-group" style="flex: 1; min-width: 120px;">
+            <label>Assign to Round</label>
+            <input type="number" id="rigRoundNum" min="1" value="1" style="height: 48px; font-size: 1.1rem;">
+          </div>
+          <button id="rigBtn" class="success" disabled
+            style="height: 48px; padding: 0 2rem; font-size: 1rem; font-weight: bold;">Add Winner</button>
+        </div>
+        <p id="rigSelectedName" style="display: none;"></p>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="db.js"></script>
+  <script src="settings.js"></script>
+</body>
+
+</html>
